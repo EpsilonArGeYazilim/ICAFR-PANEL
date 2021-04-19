@@ -12,6 +12,7 @@
                 <li class="breadcrumb-item"><a href="#">İletişim Ayarları</a></li>
             </ul>
         </div>
+        
         <div class="row">
             <div class="col-md-12">
                 <div class="tile">
@@ -119,7 +120,8 @@ export default {
         instagram:"",
         twitter:"",
         youtube:"",
-        linkedin:""
+        linkedin:"",
+        
 
       }
     };

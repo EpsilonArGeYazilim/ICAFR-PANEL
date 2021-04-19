@@ -18,6 +18,19 @@
             <h3 class="tile-title"></h3>
             <div class="tile-body ">
               <form class="form-horizontal">
+                 <div class="form-group row">
+                  <label class="control-label col-md-3">Başlık</label>
+                  <div class="col-md-12">
+                    <ckeditor
+                      style="border: solid 1px"
+                      @ready="onReady"
+                      :editor="editor"
+                      v-model="result.name"
+                      class="form-control"
+                      rows="4"
+                    ></ckeditor>
+                  </div>
+                </div>
                 <div class="form-group row ">
                   <label class="control-label col-md-6" >İÇERİK</label>
                   <div class="col-md-12">
@@ -29,8 +42,51 @@
                       class="form-control"
                       rows="4"
                     ></ckeditor>
+                    <div class="form-group row">
+                  <label class="control-label col-md-3">Resim Yükleme</label>
+                  <div class="col-md-8">
+                    <div
+                      class="fileupload fileupload-new"
+                      data-provides="fileupload"
+                    >
+                      <p style="color: red">{{ fileWarn }}</p>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div
+                            class="fileupload-preview fileupload-exists thumbnail"
+                            style="
+                              max-width: 200px;
+                              max-height: 150px;
+                              line-height: 20px;
+                            "
+                          ></div>
+                        </div>
+                        <div class="col-md-2"></div>
+
+                        <div class="col-md-4">
+                          <img
+                            id="img"
+                            :src="base_img_url+result.imgUrl"
+                            style="max-height: 150px"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <span class="btn btn-theme02 btn-file">
+                          <input
+                            id="file"
+                            type="file"
+                            ref="file"
+                            class="default"
+                          />
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                  </div>
+                </div>
+
               </form>
             </div>
             <div class="tile-footer">
@@ -75,7 +131,7 @@ export default {
       editor: DecoupledDocument,
 
       result: {
-        title: "",
+        name: "",
         content: "",
         imgUrl: "",
 
@@ -96,7 +152,7 @@ export default {
       .then((response) => {
         //conso.log(response);
 
-        this.result.title = response.data.data.title;
+        this.result.name = response.data.data.name;
         this.result.content = response.data.data.content;
         this.result.imgUrl = response.data.data.img_url;
         this.base_img_url = store.state.img_base_url;
@@ -177,15 +233,15 @@ export default {
     },
 
     sendData: function () {
-      var url = store.state.base_url + "Page/updatePage.php?key=123page_number=1";
+      var url = store.state.base_url + "Page/updatePage.php?key=123page_number=5";
 
       var datas = {
         admin_id: localStorage.getItem("id"),
         admin_token: localStorage.getItem("token"),
-        title: this.result.title,
+        name: this.result.name,
         content: this.result.content,
         img_url: this.result.imgUrl,
-        page_number:1
+        page_number:5
       };
 
       axios
