@@ -3,7 +3,7 @@
     <Header />
 
     <main class="app-content">
-      <div class="app-name">
+      <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Önemli Tarihler</h1>
         </div>

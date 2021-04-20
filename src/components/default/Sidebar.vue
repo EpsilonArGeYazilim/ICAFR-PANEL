@@ -19,10 +19,9 @@
             <span class="app-menu__label">Anasayfa</span>
           </router-link>
         </li>
-
         <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/kurullar" tag="a">
-            <span class="app-menu__label">Kurullar</span>
+          <router-link class="app-menu__item" to="/kongre_hakkinda" tag="a">
+            <span class="app-menu__label">Kongre Hakkında</span>
           </router-link>
         </li>
         <li class="treeview refresh">
@@ -31,24 +30,24 @@
           </router-link>
         </li>
         <li class="treeview refresh">
+          <router-link class="app-menu__item" to="/kurullar" tag="a">
+            <span class="app-menu__label">Kurullar</span>
+          </router-link>
+        </li>
+        
+        <li class="treeview refresh">
           <router-link class="app-menu__item" to="/paydaslar" tag="a">
             <span class="app-menu__label">Paydaşlar</span>
           </router-link>
         </li>
         <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/kitaplari" tag="a">
-            <span class="app-menu__label">Kitapları</span>
-          </router-link>
-        </li>
-
-        <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/kongre_hakkinda" tag="a">
-            <span class="app-menu__label">Kongre Hakkında</span>
-          </router-link>
-        </li>
-        <li class="treeview refresh">
           <router-link class="app-menu__item" to="/" tag="a">
             <span class="app-menu__label">Kayıt</span>
+          </router-link>
+        </li>
+        <li class="treeview refresh">
+          <router-link class="app-menu__item" to="/kitaplari" tag="a">
+            <span class="app-menu__label">Kitapları</span>
           </router-link>
         </li>
         <li class="treeview">
