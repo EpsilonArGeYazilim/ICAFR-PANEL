@@ -3,9 +3,9 @@
     <Header />
 
     <main class="app-content">
-      <div class="app-title">
+      <div class="app-name">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Kurullar</h1>
+          <h1><i class="fa fa-dashboard"></i> Kurullar</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -15,25 +15,25 @@
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <h3 class="tile-title"></h3>
-            <div class="tile-body ">
+            <h3 class="tile-name"></h3>
+            <div class="tile-body">
               <form class="form-horizontal">
-                 <div class="form-group row">
-                  <label class="control-label col-md-3">Başlık</label>
-                  <div class="col-md-12">
-                    <ckeditor
-                      style="border: solid 1px"
-                      @ready="onReady"
-                      :editor="editor"
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Başlık</label> 
+                  
+                
+                    <input type="text"
                       v-model="result.name"
                       class="form-control"
-                      rows="4"
-                    ></ckeditor>
-                  </div>
+                     
+
+                    >
                 </div>
-                <div class="form-group row ">
-                  <label class="control-label col-md-6" >İÇERİK</label>
-                  <div class="col-md-12">
+               
+                <div class="form-group row">
+                  <label class="control-label col-md-3">Açıklama</label> 
+                  
+                </div>
                     <ckeditor
                       style="border: solid 1px"
                       @ready="onReady"
@@ -41,8 +41,11 @@
                       v-model="result.content"
                       class="form-control"
                       rows="4"
+
                     ></ckeditor>
-                     <div class="form-group row">
+                
+
+                <div class="form-group row">
                   <label class="control-label col-md-3">Resim Yükleme</label>
                   <div class="col-md-8">
                     <div
@@ -84,8 +87,6 @@
                     </div>
                   </div>
                 </div>
-                  </div>
-                </div>
               </form>
             </div>
             <div class="tile-footer">
@@ -103,7 +104,10 @@
                   >
                     <i class="fa fa-fw fa-lg fa-times-circle"></i>İptal
                   </button>
-          
+                  &nbsp;
+
+                  <!--başlangıç-->
+                 
                 </div>
               </div>
             </div>
@@ -120,6 +124,7 @@
 import Header from "./default/Header";
 import Sidebar from "./default/Sidebar";
 import axios from "axios";
+import Modal from "./default/Modal";
 import store from "../store";
 import DecoupledDocument from "@ckeditor/ckeditor5-build-decoupled-document";
 
@@ -144,16 +149,16 @@ export default {
 
   created() {
     let dataUrl =
-      store.state.base_url + "Page/getPage.php?key=123";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=4";
 
     return axios
       .get(dataUrl)
       .then((response) => {
         //conso.log(response);
 
-        this.result.name = response.data.data.name;
-        this.result.content = response.data.data.content;
-        this.result.imgUrl = response.data.data.img_url;
+        this.result.name = response.data.result.name;
+        this.result.content = response.data.result.content;
+        this.result.imgUrl = response.data.result.img_url;
         this.base_img_url = store.state.img_base_url;
       })
       .catch((err) => {
@@ -232,12 +237,12 @@ export default {
     },
 
     sendData: function () {
-      var url = store.state.base_url + "Page/updatePage.php?key=123page_number=4";
+      var url = store.state.base_url + "Page/updatePage.php?key=123";
 
       var datas = {
         admin_id: localStorage.getItem("id"),
         admin_token: localStorage.getItem("token"),
-        name: this.result.namw,
+        name: this.result.name,
         content: this.result.content,
         img_url: this.result.imgUrl,
         page_number:4
@@ -260,6 +265,7 @@ export default {
   components: {
     Header,
     Sidebar,
+    Modal,
   },
 };
 </script>

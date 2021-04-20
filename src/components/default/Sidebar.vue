@@ -46,6 +46,11 @@
             <span class="app-menu__label">Kongre Hakkında</span>
           </router-link>
         </li>
+        <li class="treeview refresh">
+          <router-link class="app-menu__item" to="/" tag="a">
+            <span class="app-menu__label">Kayıt</span>
+          </router-link>
+        </li>
         <li class="treeview">
           <a class="app-menu__item" href="#" data-toggle="treeview">
             <span class="app-menu__label">Duyuru</span>
