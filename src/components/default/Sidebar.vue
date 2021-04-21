@@ -41,7 +41,7 @@
           </router-link>
         </li>
         <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/" tag="a">
+          <router-link class="app-menu__item" to="/kayit" tag="a">
             <span class="app-menu__label">Kayıt</span>
           </router-link>
         </li>
