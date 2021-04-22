@@ -17,6 +17,24 @@
           <div class="tile">
             <h3 class="tile-title"></h3>
             <div class="tile-body">
+               <form>
+                  <div class="form-group">
+                    <label class="control-label">Dil Seçiniz:</label>
+                    <select
+                      @change="onChange($event)"
+                      name="deneme"
+                      id="deneme"
+                    >
+                      <option
+                        v-for="(item, index) in language"
+                        :key="index"
+                        :value="item.id"
+                      >
+                        {{ item.language_name }}
+                      </option>
+                    </select>
+                  </div>
+                </form>
               <form class="form-horizontal">
                 <div class="form-group row">
                   <label class="control-label col-md-3">Başlık</label>
@@ -110,12 +128,7 @@
                     <i class="fa fa-fw fa-lg fa-times-circle"></i>İptal
                   </button>
                   &nbsp;
-                  <Modal>
-                    <iframe
-                      style="width: 100%; height: 100%"
-                      :src="web_url + 'notices'"
-                    ></iframe>
-                  </Modal>
+                  
                 </div>
               </div>
             </div>
@@ -150,10 +163,23 @@ export default {
       },
       file: "",
       fileWarn: "",
+      language: [],
+      language_id: 1,
     };
   },
 
   created() {
+    
+     let dataUrl = store.state.base_url + "Language/getAllLanguage.php?key=123";
+    axios
+      .get(dataUrl)
+      .then((response) => {
+        //conso.log(response);
+        this.language = response.data.data;
+      })
+      .catch((err) => {
+        //conso.log(err.response);
+      });
 
   },
 
@@ -161,6 +187,10 @@ export default {
     reload: function () {
       location.reload();
     },
+    onChange(event) {
+      this.language_id = event.target.value;
+    },
+
     onReady(editor) {
       // Insert the toolbar before the editable area.
       editor.ui
@@ -237,6 +267,7 @@ export default {
         content: this.result.content,
         link: this.result.link,
         img_url: this.result.imgUrl,
+        lan_id: this.language_id,
       };
 
       axios

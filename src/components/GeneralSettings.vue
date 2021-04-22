@@ -17,6 +17,24 @@
           <div class="tile">
             <h3 class="tile-title"></h3>
             <div class="tile-body">
+               <form>
+                  <div class="form-group">
+                    <label class="control-label">Dil Seçiniz:</label>
+                    <select
+                      @change="onChange($event)"
+                      name="deneme"
+                      id="deneme"
+                    >
+                      <option
+                        v-for="(item, index) in language"
+                        :key="index"
+                        :value="item.id"
+                      >
+                        {{ item.language_name }}
+                      </option>
+                    </select>
+                  </div>
+                </form>
               <form class="form-horizontal">
                 <div class="form-group row">
                   <label class="control-label col-md-3">Site Adı</label>
@@ -137,14 +155,16 @@ export default {
       base_img_url:"",
       file: "",
       fileWarn: "",
+      language: [],
+      language_id: 1,
     };
   },
 
   created() {
     let dataUrl =
-      store.state.base_url + "General/getAllColumnGeneral.php?key=123";
+      store.state.base_url + "General/getAllColumnGeneral.php?key=123&lan_id=1";
    
-    return axios
+     axios
       .get(dataUrl)
       .then((response) => {
 
@@ -158,11 +178,43 @@ export default {
       .catch((err) => {
         //conso.log(err.response);
       });
+        dataUrl = store.state.base_url + "Language/getAllLanguage.php?key=123";
+    axios
+      .get(dataUrl)
+      .then((response) => {
+        //conso.log(response);
+        this.language = response.data.data;
+      })
+      .catch((err) => {
+        //conso.log(err.response);
+      });
   },
+  
 
   methods: {
     reload: function () {
       location.reload();
+    },
+    onChange(event) {
+      this.language_id = event.target.value;
+       console.log(this.language_id);
+       let dataUrl =
+      store.state.base_url + "General/getAllColumnGeneral.php?key=123&lan_id="+this.language_id;
+   
+     axios
+      .get(dataUrl)
+      .then((response) => {
+
+        //conso.log(response);
+
+        this.result.name = response.data.data.site_name;
+        this.result.slogan = response.data.data.slogan;
+        this.result.imgUrl = response.data.data.logo_url;
+        this.base_img_url = store.state.img_base_url;
+      })
+      .catch((err) => {
+        //conso.log(err.response);
+      });
     },
     onReady(editor) {
       // Insert the toolbar before the editable area.
@@ -239,13 +291,14 @@ export default {
         site_name: this.result.name,
         slogan: this.result.slogan,
         logo_url: this.result.imgUrl,
+        lan_id: this.language_id,
       };
 
       axios
         .post(url, JSON.stringify(datas))
         .then((response) => {
           if (response.data.data == true) {
-            location.reload();
+            //location.reload();
           }
           //conso.log(response);
         })

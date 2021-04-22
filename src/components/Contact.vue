@@ -5,8 +5,10 @@
 <main class="app-content">
         <div class="app-title">
             <div>
+                
                 <h1><i class="fa fa-dashboard"></i> İletişim Ayarları</h1>
             </div>
+            
             <ul class="app-breadcrumb breadcrumb">
                 <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
                 <li class="breadcrumb-item"><a href="#">İletişim Ayarları</a></li>
@@ -18,6 +20,25 @@
                 <div class="tile">
                     <h3 class="tile-title">İletişim Ayarları</h3>
                     <div class="tile-body">
+                        <form>
+                  <div class="form-group">
+                    <label class="control-label">Dil Seçiniz:</label>
+                    <select
+                      @change="onChange($event)"
+                      name="deneme"
+                      id="deneme"
+                    >
+                      <option
+                        v-for="(item, index) in language"
+                        :key="index"
+                        :value="item.id"
+                      >
+                        {{ item.language_name }}
+                      </option>
+                    </select>
+                  </div>
+                </form>
+
                         <form>
                             <div class="form-group">
                                 <label class="control-label">Site Email: <br> Not: Bu Adres formlardan gelen mesajlar için varsayılan mail adresinizdir!</label>
@@ -123,14 +144,16 @@ export default {
         linkedin:"",
         
 
-      }
+      },
+     language: [],
+      language_id: 1,
     };
   },
 
   created() {
-    let dataUrl = store.state.base_url+"Contact/getContactAllColumn.php?key=123";
+    let dataUrl = store.state.base_url+"Contact/getContactAllColumn.php?key=123&lan_id=1";
 
-    return axios
+     axios
       .get(dataUrl)
       .then((response) => {
         //conso.log(response);
@@ -152,12 +175,50 @@ export default {
       .catch((err) => {
         //conso.log(err.response);
       });
+       dataUrl = store.state.base_url + "Language/getAllLanguage.php?key=123";
+    axios
+      .get(dataUrl)
+      .then((response) => {
+        //conso.log(response);
+        this.language = response.data.data;
+      })
+      .catch((err) => {
+        //conso.log(err.response);
+      });
   },
 
   methods: {
     reload: function() {
       location.reload();
     },
+     onChange(event) {
+      this.language_id = event.target.value;
+       console.log(this.language_id);
+       let dataUrl = store.state.base_url+"Contact/getContactAllColumn.php?key=123&lan_id="+this.language_id;
+
+     axios
+      .get(dataUrl)
+      .then((response) => {
+        //conso.log(response);
+
+        this.result.site_email = response.data.data.site_email;
+        this.result.site_email2 = response.data.data.site_email2;
+        this.result.phone = response.data.data.phone;
+        this.result.fax = response.data.data.fax;
+        this.result.phone2 = response.data.data.phone2;
+        this.result.fax2 = response.data.data.fax2;
+        this.result.address = response.data.data.address;
+        this.result.google_map_location = response.data.data.google_map_location;
+        this.result.facebook = response.data.data.facebook;
+        this.result.instagram = response.data.data.instagram;
+        this.result.linkedin = response.data.data.linkedin;
+        this.result.twitter = response.data.data.twitter;
+        this.result.youtube = response.data.data.youtube;
+      })
+      .catch((err) => {
+        //conso.log(err.response);
+      });
+     },
 
     sendData: function () {
       var url = store.state.base_url+"Contact/updateContact.php?key=123";
@@ -165,6 +226,7 @@ export default {
       var datas = {
         admin_id: localStorage.getItem("id"),
         admin_token: localStorage.getItem("token"),
+        lan_id: this.language_id,
 
         site_name: this.result.site_name,
         slogan: this.result.slogan,
@@ -182,7 +244,7 @@ export default {
         linkedin:this.result.linkedin,
         instagram:this.result.instagram ,
         twitter:this.result.twitter ,
-        youtube:this.result.youtube 
+        youtube:this.result.youtube,
       };
 
       axios

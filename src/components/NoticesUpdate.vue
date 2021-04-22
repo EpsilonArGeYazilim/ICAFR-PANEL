@@ -124,12 +124,7 @@
                     <i class="fa fa-trash-o"></i>Sil
                   </button>
                   &nbsp;
-                  <Modal>
-                    <iframe
-                      style="width: 100%; height: 100%"
-                      :src="web_url + 'notices'"
-                    ></iframe>
-                  </Modal>
+                 
                 </div>
               </div>
             </div>
@@ -150,6 +145,7 @@
                     <th>Resim</th>
                     <th>Resim Adı</th>
                     <th>Tarih</th>
+                    <th>Dil</th>
                   </tr>
                 </thead>
                 <tbody></tbody>
@@ -328,6 +324,7 @@ export default {
                 '">',
               value["img_url"],
               value["reg_date"],
+              value["language_id"],
             ])
             .draw(false);
         });
