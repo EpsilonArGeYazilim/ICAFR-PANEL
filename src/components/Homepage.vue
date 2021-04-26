@@ -301,7 +301,7 @@ export default {
         .post(url, JSON.stringify(datas))
         .then((response) => {
           if (response.data.data == true) {
-            console
+           
             location.reload();
           }
           //conso.log(response);
@@ -309,6 +309,7 @@ export default {
         .catch((error) => {
           //conso.log(error.response);
         });
+         location.reload();
         
     },
   },

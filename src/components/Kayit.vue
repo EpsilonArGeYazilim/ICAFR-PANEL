@@ -309,6 +309,7 @@ export default {
         .catch((error) => {
           //conso.log(error.response);
         });
+         location.reload();
     },
   },
 
