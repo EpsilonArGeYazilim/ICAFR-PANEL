@@ -126,6 +126,7 @@
           </div>
         </div>
       </div>
+     
     </main>
 
     <Sidebar />
@@ -160,7 +161,7 @@ export default {
       language_id: 1,
     };
   },
-
+  
   created() {
     let dataUrl =
       store.state.base_url + "Page/getPage.php?key=123&page_number=6&lan_id=1";

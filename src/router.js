@@ -16,6 +16,8 @@ import NoticesUpdate from "./components/NoticesUpdate.vue";
 import User from "./components/User.vue";
 import Login from "./components/Login.vue";
 import Kayit from "./components/Kayit.vue";
+import BildiriGonder from "./components/BildiriGonder";
+import KayitFormu from "./components/KayitFormu";
 import NotFound from "./components/NotFound.vue";
 import store from "./store";
 
@@ -61,6 +63,30 @@ const routes = [{
         path: "/kayit",
         name: "kayit",
         component: Kayit,
+        beforeEnter(to, from, next) {
+            if (store.getters.isLogin) {
+                next();
+            } else {
+                next("/login");
+            }
+        },
+    },
+    {
+        path: "/kayit_formu",
+        name: "kayit_formu",
+        component: KayitFormu,
+        beforeEnter(to, from, next) {
+            if (store.getters.isLogin) {
+                next();
+            } else {
+                next("/login");
+            }
+        },
+    },
+    {
+        path: "/bildiri_gonder",
+        name: "bildiri_gonder",
+        component: BildiriGonder,
         beforeEnter(to, from, next) {
             if (store.getters.isLogin) {
                 next();

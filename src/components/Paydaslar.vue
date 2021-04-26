@@ -293,7 +293,7 @@ export default {
         name: this.result.name,
         content: this.result.content,
         img_url: this.result.imgUrl,
-        page_number: 1,
+        page_number: 5,
         lan_id: this.language_id,
       };
 

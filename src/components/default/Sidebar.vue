@@ -45,6 +45,16 @@
             <span class="app-menu__label">Kayıt</span>
           </router-link>
         </li>
+         <li class="treeview refresh">
+          <router-link class="app-menu__item" to="/kayit_formu" tag="a">
+            <span class="app-menu__label">Kayıt Formu</span>
+          </router-link>
+        </li>
+        <li class="treeview refresh">
+          <router-link class="app-menu__item" to="/bildiri_gonder" tag="a">
+            <span class="app-menu__label">Bildiri Gönder</span>
+          </router-link>
+        </li>
         <li class="treeview refresh">
           <router-link class="app-menu__item" to="/kitaplari" tag="a">
             <span class="app-menu__label">Kitapları</span>

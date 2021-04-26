@@ -112,7 +112,7 @@
                   >
                     <i class="fa fa-fw fa-lg fa-check-circle"></i>Kaydet</button
                   >&nbsp;&nbsp;&nbsp;<button
-                    @click="reload()"
+                    @click="sendData()"
                     class="btn btn-secondary"
                   >
                     <i class="fa fa-fw fa-lg fa-times-circle"></i>İptal
@@ -301,6 +301,7 @@ export default {
         .post(url, JSON.stringify(datas))
         .then((response) => {
           if (response.data.data == true) {
+            console
             location.reload();
           }
           //conso.log(response);
@@ -308,6 +309,7 @@ export default {
         .catch((error) => {
           //conso.log(error.response);
         });
+        
     },
   },
 

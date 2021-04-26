@@ -112,7 +112,7 @@
                   >
                     <i class="fa fa-fw fa-lg fa-check-circle"></i>Kaydet</button
                   >&nbsp;&nbsp;&nbsp;<button
-                    @click="reload()"
+                    @click="sendData()"
                     class="btn btn-secondary"
                   >
                     <i class="fa fa-fw fa-lg fa-times-circle"></i>İptal
@@ -293,7 +293,7 @@ export default {
         name: this.result.name,
         content: this.result.content,
         img_url: this.result.imgUrl,
-        page_number: 1,
+        page_number: 2,
         lan_id: this.language_id,
       };
 
