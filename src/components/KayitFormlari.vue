@@ -82,7 +82,7 @@ export default {
         var table = $("#sampleTable").DataTable();
 
         $.each(datas, function (index, value) {
-          var docUrl="http://kongre.epsilonarge.com/EpsilonApi/dekont/";
+          var docUrl="http://api.icafr.org/EpsilonApi/dekont/";
           table.row
             .add([
               value["id"],

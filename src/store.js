@@ -7,10 +7,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state : {
-        web_url : "http://www.kongre.epsilonarge.com/",
-        base_url : "http://kongre.epsilonarge.com/EpsilonApi/",
-        img_base_url :"http://kongre.epsilonarge.com/img/",
-        img_upload_url :"http://kongre.epsilonarge.com/UploadImg/admin_upload_img.php",
+        web_url : "http://www.icafr.org",
+        base_url : "http://api.icafr.org/EpsilonApi/",
+        img_base_url :"http://api.icafr.org/img/",
+        img_upload_url :"http://api.icafr.org/UploadImg/admin_upload_img.php",
         token : "",
         id : "",
         loginResult :false

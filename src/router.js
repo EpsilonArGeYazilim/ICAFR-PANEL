@@ -6,7 +6,7 @@ import OnemliTarihler from "./components/OnemliTarihler.vue";
 import Kurullar from "./components/Kurullar.vue";
 import Paydaslar from "./components/Paydaslar.vue";
 import Contact from "./components/Contact.vue";
-import Kitaplari from "./components/Kitaplari.vue";
+import Kitaplar from "./components/Kitaplar.vue";
 import KongreHakkinda from "./components/KongreHakkinda.vue";
 import GeneralSettings from "./components/GeneralSettings.vue";
 import NewUser from "./components/NewUser.vue";
@@ -15,9 +15,10 @@ import Notices from "./components/Notices.vue";
 import NoticesUpdate from "./components/NoticesUpdate.vue";
 import User from "./components/User.vue";
 import Login from "./components/Login.vue";
-import Kayit from "./components/Kayit.vue";
-import BildiriGonder from "./components/BildiriGonder";
-import KayitFormu from "./components/KayitFormu";
+import KayitSayfasi from "./components/KayitSayfasi.vue";
+import BildiriSayfasi from "./components/BildiriSayfasi.vue";
+import BildiriFormlari from "./components/BildiriFormlari";
+import KayitFormu from "./components/KayitFormlari";
 import NotFound from "./components/NotFound.vue";
 import store from "./store";
 
@@ -60,9 +61,9 @@ const routes = [{
         },
     },
     {
-        path: "/kayit",
-        name: "kayit",
-        component: Kayit,
+        path: "/kayit_sayfasi",
+        name: "kayit_sayfasi",
+        component: KayitSayfasi,
         beforeEnter(to, from, next) {
             if (store.getters.isLogin) {
                 next();
@@ -72,8 +73,20 @@ const routes = [{
         },
     },
     {
-        path: "/kayit_formu",
-        name: "kayit_formu",
+        path: "/bildiri_sayfasi",
+        name: "bildiri_sayfasi",
+        component: BildiriSayfasi,
+        beforeEnter(to, from, next) {
+            if (store.getters.isLogin) {
+                next();
+            } else {
+                next("/login");
+            }
+        },
+    },
+    {
+        path: "/kayit_formlari",
+        name: "kayit_formlari",
         component: KayitFormu,
         beforeEnter(to, from, next) {
             if (store.getters.isLogin) {
@@ -84,9 +97,9 @@ const routes = [{
         },
     },
     {
-        path: "/bildiri_gonder",
-        name: "bildiri_gonder",
-        component: BildiriGonder,
+        path: "/bildiri_formlari",
+        name: "bildiri_formlari",
+        component: BildiriFormlari,
         beforeEnter(to, from, next) {
             if (store.getters.isLogin) {
                 next();
@@ -109,9 +122,9 @@ const routes = [{
         },
     },
     {
-        path: "/kitaplari",
-        name: "kitaplari",
-        component: Kitaplari,
+        path: "/kitaplar",
+        name: "kitaplar",
+        component: Kitaplar,
         beforeEnter(to, from, next) {
             if (store.getters.isLogin) {
                 next();

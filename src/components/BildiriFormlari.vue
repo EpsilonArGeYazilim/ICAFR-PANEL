@@ -75,7 +75,7 @@ export default {
         var table = $("#sampleTable").DataTable();
 
         $.each(datas, function (index, value) {
-          var docUrl="http://kongre.epsilonarge.com/EpsilonApi/doc/";
+          var docUrl="http://api.icafr.org/EpsilonApi/doc/";
           table.row
             .add([
               value["id"],

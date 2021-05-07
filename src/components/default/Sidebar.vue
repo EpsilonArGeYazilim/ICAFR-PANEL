@@ -41,23 +41,28 @@
           </router-link>
         </li>
         <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/kayit" tag="a">
-            <span class="app-menu__label">Kayıt</span>
+          <router-link class="app-menu__item" to="/kayit_sayfasi" tag="a">
+            <span class="app-menu__label">Kayıt Sayfası</span>
           </router-link>
         </li>
          <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/kayit_formu" tag="a">
-            <span class="app-menu__label">Kayıt Formu</span>
+          <router-link class="app-menu__item" to="/kayit_formlari" tag="a">
+            <span class="app-menu__label">Kayıt Formları</span>
           </router-link>
         </li>
         <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/bildiri_gonder" tag="a">
-            <span class="app-menu__label">Bildiri Gönder</span>
+          <router-link class="app-menu__item" to="/bildiri_sayfasi" tag="a">
+            <span class="app-menu__label">Bildiri Sayfası</span>
           </router-link>
         </li>
         <li class="treeview refresh">
-          <router-link class="app-menu__item" to="/kitaplari" tag="a">
-            <span class="app-menu__label">Kitapları</span>
+          <router-link class="app-menu__item" to="/bildiri_formlari" tag="a">
+            <span class="app-menu__label">Bildiri Formları</span>
+          </router-link>
+        </li>
+        <li class="treeview refresh">
+          <router-link class="app-menu__item" to="/kitaplar" tag="a">
+            <span class="app-menu__label">Kitaplar</span>
           </router-link>
         </li>
         <li class="treeview">

@@ -5,7 +5,7 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i>Kurullar</h1>
+          <h1><i class="fa fa-dashboard"></i> Kayıt Sayfası</h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -126,6 +126,7 @@
           </div>
         </div>
       </div>
+     
     </main>
 
     <Sidebar />
@@ -160,10 +161,10 @@ export default {
       language_id: 1,
     };
   },
-
+  
   created() {
     let dataUrl =
-      store.state.base_url + "Page/getPage.php?key=123&page_number=4&lan_id=1";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=6&lan_id=1";
 
     axios
       .get(dataUrl)
@@ -201,7 +202,7 @@ export default {
 
       let dataUrl =
         store.state.base_url +
-        "Page/getPage.php?key=123&page_number=4&lan_id=" +
+        "Page/getPage.php?key=123&page_number=6&lan_id=" +
         this.language_id;
 
       axios
@@ -238,9 +239,9 @@ export default {
       var sendData = this.sendData;
 
       //conso.log(this.file);
-      if (this.file.size > 2500000) {
+      if (this.file.size > 1500000) {
         this.fileWarn =
-          "Yükleyeceğiniz Dosya Boyutu 2.5 Mb'yi Aşamaz!  " +
+          "Yükleyeceğiniz Dosya Boyutu 1.5 Mb'yi Aşamaz!  " +
           " Dosya Boyutunuz : " +
           this.file.size / 1000000 +
           "Mb";
@@ -293,7 +294,7 @@ export default {
         name: this.result.name,
         content: this.result.content,
         img_url: this.result.imgUrl,
-        page_number: 4,
+        page_number: 6,
         lan_id: this.language_id,
       };
 
