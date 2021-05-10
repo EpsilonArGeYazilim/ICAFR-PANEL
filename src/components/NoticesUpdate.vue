@@ -198,9 +198,9 @@ export default {
       var sendData = this.sendData;
 
       //conso.log(this.file);
-      if (this.file.size > 1500000) {
+      if (this.file.size > 2500000) {
         this.fileWarn =
-          "Yükleyeceğiniz Dosya Boyutu 1.5 Mb'yi Aşamaz!  " +
+          "Yükleyeceğiniz Dosya Boyutu 2.5 Mb'yi Aşamaz!  " +
           " Dosya Boyutunuz : " +
           this.file.size / 1000000 +
           "Mb";
